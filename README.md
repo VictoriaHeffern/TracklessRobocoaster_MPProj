@@ -19,6 +19,6 @@ NOTE: ROS Melodic, Python 2.7
     - urdf : main overview xacro
     - config: yaml files
     - launch: launch files (gazebo.launch is the main one)
-  - robocoaster_gazebo: contrains gazebo files and main launch
+  - robocoaster_gazebo: contrains gazebo files
     - worlds : contains the large floor/building plan
   
