@@ -1,0 +1,4 @@
+{
+    "ROS2.distro": "melodic",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}

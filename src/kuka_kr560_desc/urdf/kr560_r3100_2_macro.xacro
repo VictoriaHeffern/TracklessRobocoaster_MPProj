@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Transmission file (for ros_control) -->
+  <xacro:include filename="$(find kuka_kr560_desc)/urdf/kr_fortec_transmission.xacro"/>
+
+  <xacro:macro name="kuka_kr560_r3100_2_robot" params="prefix *origin">
+
+    <!-- <link name="world"/> -->
+
+    <!-- Base Link -->
+    <link name="${prefix}base_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/base_link.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/base_link.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="100.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.5" ixy="0" ixz="0" iyy="1.5" iyz="0" izz="1.5"/>
+      </inertial>
+    </link>
+
+    <!-- Links 1-6 -->
+    <link name="${prefix}link_1">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_1.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_1.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <link name="${prefix}link_2">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_2.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_2.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <link name="${prefix}link_3">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_3.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_3.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <link name="${prefix}link_4">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_4.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_4.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <link name="${prefix}link_5">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_5.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_5.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <link name="${prefix}link_6">
+      <collision>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/collision/link_6.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://kuka_kr560_desc/meshes/kr560_r3100_2/visual/link_6.dae"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+      </inertial>
+    </link>
+
+    <!-- Fixed world to base -->
+    <joint name="${prefix}agv_to_base" type="fixed">
+      <parent link="agv_chassis"/> <child link="${prefix}base_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <!-- Revolute joints -->
+    <joint name="${prefix}joint_1" type="revolute">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="15000" lower="-3.22885" upper="3.22885" velocity="1.57"/>
+      <origin rpy="-3.14159 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <joint name="${prefix}joint_2" type="revolute">
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="17880" lower="-2.2689" upper="0.349" velocity="1.396"/>
+      <origin rpy="1.5708 0 0" xyz="0.5 0 -0.86"/>
+    </joint>
+
+    <joint name="${prefix}joint_3" type="revolute">
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="15315" lower="-1.745" upper="2.879" velocity="1.309"/>
+      <origin rpy="0 0 -1.5708" xyz="1.55 0 0"/>
+    </joint>
+
+    <joint name="${prefix}joint_4" type="revolute">
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="4847" lower="-6.108" upper="6.108" velocity="1.57"/>
+      <origin rpy="1.5708 0 0" xyz="0.18 0 0"/>
+    </joint>
+
+    <joint name="${prefix}joint_5" type="revolute">
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="4852" lower="-2.094" upper="2.094" velocity="1.57"/>
+      <origin rpy="-1.5708 0 0" xyz="0 0 -1.0345"/>
+    </joint>
+
+    <joint name="${prefix}joint_6" type="revolute">
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="2675" lower="-6.108" upper="6.108" velocity="2.268"/>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </joint>
+
+    <!-- ROS-Industrial frames -->
+    <link name="${prefix}base"/>
+    <joint name="${prefix}base_link-base" type="fixed">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="${prefix}flange"/>
+    <joint name="${prefix}link6-flange" type="fixed">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}flange"/>
+      <origin xyz="0 0 -0.305" rpy="0 1.5708 0"/>
+    </joint>
+
+    <link name="${prefix}tool0"/>
+    <joint name="${prefix}link6-tool0" type="fixed">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}tool0"/>
+      <origin xyz="0 0 -0.305" rpy="0 3.1416 0"/>
+    </joint>
+
+  </xacro:macro>
+</robot>
+

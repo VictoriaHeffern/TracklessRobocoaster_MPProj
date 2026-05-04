@@ -1,0 +1,82 @@
+<launch>
+  <!-- 1. Define a Large Ground Plane -->
+  <param name="large_ground_sdf" 
+         value="&lt;sdf version='1.6'&gt;
+                  &lt;model name='large_floor'&gt;
+                    &lt;static&gt;true&lt;/static&gt;
+                    &lt;link name='link'&gt;
+                      &lt;collision name='collision'&gt;
+                        &lt;geometry&gt;&lt;plane&gt;&lt;normal&gt;0 0 1&lt;/normal&gt;&lt;size&gt;500 500&lt;/size&gt;&lt;/plane&gt;&lt;/geometry&gt;
+                      &lt;/collision&gt;
+                      &lt;visual name='visual'&gt;
+                        &lt;geometry&gt;&lt;plane&gt;&lt;normal&gt;0 0 1&lt;/normal&gt;&lt;size&gt;500 500&lt;/size&gt;&lt;/plane&gt;&lt;/geometry&gt;
+                        &lt;material&gt;
+                          &lt;script&gt;
+                            &lt;uri&gt;file://media/materials/scripts/gazebo.material&lt;/uri&gt;
+                            &lt;name&gt;Gazebo/Grey&lt;/name&gt;
+                          &lt;/script&gt;
+                        &lt;/material&gt;
+                      &lt;/visual&gt;
+                    &lt;/link&gt;
+                  &lt;/model&gt;
+                &lt;/sdf&gt;" />
+
+  <!-- 2. Launch Gazebo (Empty World) -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="true"/> 
+    <arg name="use_sim_time" value="true"/>
+  </include>
+
+  <!-- 3. Spawn Large Ground -->
+  <node name="spawn_ground" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -model large_floor -param large_ground_sdf" 
+        output="screen" />
+
+  <!-- Target Markers (Transparent Spheres) -->
+  <param name="target_marker_sdf" 
+        value="&lt;sdf version='1.6'&gt;
+                  &lt;model name='target_marker'&gt;
+                    &lt;static&gt;true&lt;/static&gt;
+                    &lt;link name='link'&gt;
+                      &lt;visual name='visual'&gt;
+                        &lt;geometry&gt;&lt;sphere&gt;&lt;radius&gt;1.0&lt;/radius&gt;&lt;/sphere&gt;&lt;/geometry&gt;
+                        &lt;material&gt;
+                          &lt;ambient&gt;0 1 0 0.5&lt;/ambient&gt;
+                          &lt;diffuse&gt;0 1 0 0.5&lt;/diffuse&gt;
+                        &lt;/material&gt;
+                      &lt;/visual&gt;
+                    &lt;/link&gt;
+                  &lt;/model&gt;
+                &lt;/sdf&gt;" />
+
+  <!-- Spawn Targets at specific locations -->
+  <node name="spawn_target_1" pkg="gazebo_ros" type="spawn_model" args="-sdf -model target_1 -param target_marker_sdf -x 35 -y -55 -z 0.5" />
+  <node name="spawn_target_2" pkg="gazebo_ros" type="spawn_model" args="-sdf -model target_2 -param target_marker_sdf -x -51 -y 45 -z 0.5" />
+  <node name="spawn_target_3" pkg="gazebo_ros" type="spawn_model" args="-sdf -model target_3 -param target_marker_sdf -x -97 -y 5.9 -z 0.5" />
+
+  <!-- 4. Spawn Building -->
+  <node name="spawn_building" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find robocoaster_gazebo)/worlds/TestFloorPlan/model.sdf -model TestFloorPlan -x 0 -y 0 -z 0" 
+        output="screen" />
+
+  <!-- 5. Robot Desc -->
+  <param name="robot_description" 
+         command="$(find xacro)/xacro '$(find robocoaster_control)/urdf/robocoaster_urdfcontrol.xacro'" />
+
+  <!-- 6. Custom Joint Positions -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+        args="-param robot_description -urdf -model robocoaster
+        -x 0 -y 0 -z 0.1 
+        -J joint_2 -1.57 
+        -J joint_3 1.57
+        -unpause"
+        output="screen" />
+
+  <!-- 7. Controllers -->
+  <rosparam file="$(find robocoaster_control)/config/robocoaster_controllers.yaml" command="load"/>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller arm_controller" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- 8. RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robocoaster_control)/rviz/display.rviz" />
+</launch>

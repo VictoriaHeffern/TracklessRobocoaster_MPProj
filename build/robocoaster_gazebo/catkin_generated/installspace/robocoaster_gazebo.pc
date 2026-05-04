@@ -1,0 +1,8 @@
+prefix=/home/victoria/Desktop/MotionPlanningProject/catkin_ws/install
+
+Name: robocoaster_gazebo
+Description: Description of robocoaster_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

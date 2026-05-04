@@ -1,0 +1,2 @@
+kuka_kr560_desc:robocoaster_control:robocoaster_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/victoria/Desktop/MotionPlanningProject/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/victoria/Desktop/MotionPlanningProject/catkin_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/victoria/Desktop/MotionPlanningProject/catkin_ws/install
+
+Name: robocoaster_desc
+Description: Description of robocoaster_desc
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
