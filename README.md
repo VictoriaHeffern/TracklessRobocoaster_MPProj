@@ -10,7 +10,7 @@ Motion Planning : RBE550 at Worcester Polytechnic Institute
   - kuka_kr560_desc
     - meshes : contains collision (stl files) and visual (dae files)
     - urdf : contains all of the xacro files for kuka arm
-  - robocoaster_control: contains planners, plotting
+  - robocoaster_control
     - src
       - arm_rrt_planner : RRT for kuka arm
       - robocoaster_telemetry : manages the plotting of g-forces and accel on EE
@@ -18,6 +18,6 @@ Motion Planning : RBE550 at Worcester Polytechnic Institute
     - urdf : main overview xacro
     - config: yaml files
     - launch: launch files (gazebo.launch is the main one)
-  - robocoaster_gazebo: contrains gazebo files
+  - robocoaster_gazebo
     - worlds : contains the large floor/building plan
   
